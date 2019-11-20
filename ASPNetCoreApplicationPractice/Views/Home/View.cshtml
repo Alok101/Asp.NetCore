@@ -1,0 +1,28 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "View";
+    var photoPath = "~/Images/" + (Model.PhotoPath ?? "M.jpg");
+}
+
+<h1>View</h1>
+<div class="row justify-content-center m-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@photoPath" asp-append-version="true" />
+                <h4>@Html.DisplayNameFor(model => model.Id) : @Html.DisplayFor(model => model.Id)</h4>
+                <h4>@Html.DisplayNameFor(model => model.Address) : @Html.DisplayFor(model => model.Address)</h4>
+                <h4>@Html.DisplayNameFor(model => model.Department) : @Html.DisplayFor(model => model.Department)</h4>
+                <h4>@Html.DisplayNameFor(model => model.Salary) : @Html.DisplayFor(model => model.Salary)</h4>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
+                @*<a href="#" class="btn btn-primary">View</a>*@
+            </div>
+        </div>
+    </div>
+</div> 

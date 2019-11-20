@@ -1,0 +1,37 @@
+﻿@model HomeDefaultViewsModel
+@{
+    ViewBag.Title = Model.Title;
+}
+
+    <div class="row justify-content-center m-3">
+        @foreach (var emp in Model.AllEmployee)
+        {
+            var photoPath = "~/Images/" + (emp.PhotoPath ?? "F.jpg");
+            <div class="col-md-4">
+                <div class="card-deck">
+                    <div class="card m-3">
+                        <img src="@photoPath" class="card-img-top" style="width:300px;height:300px" asp-append-version="true" />
+                        <div class="card-body">
+                            <div class="card-title">
+                                <div>@emp.Name</div>
+                            </div>
+                            <div class="card-text">
+                                @*<div>Id : @emp.Id</div>*@
+                                <div>Address : @emp.Address</div>
+                                <div>Department : @emp.Department</div>
+                                <div>Salary : @emp.Salary</div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a asp-controller="home" asp-action="view" asp-route-id="@emp.Id" class="btn btn-primary m-1">View</a> 
+                                @*@Html.ActionLink("Display","view","home",new { id = emp.Id},new {@class="btn btn-primary" })*@
+                                @*<a href="@Url.Action("view","home",new {id=emp.Id })" class="btn btn-primary">View</a>*@
+                                @*<a href="/home/view/@emp.Id" class="btn btn-primary">View</a>*@
+                                <a asp-action="Edit" asp-controller="Home" asp-route-id="@emp.Id" class="btn btn-primary m-1">Edit</a>
+                                <a href="#" class="btn btn-danger m-1">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
